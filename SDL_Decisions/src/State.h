@@ -24,8 +24,11 @@ private:
 	//Casilla posicionamiento:
 	int x = 8;
 	int y = 20;
+	void(*functionInExecution)(void); // &functionInExecution (Referencia a la función que se está ejecutando)
 public:
 	std::pair<int, int> getLocation();
+	Home();
+	~Home();
 	void Enter();
 	void Update();
 	void Exit();
@@ -35,7 +38,10 @@ class Mine : public State{
 private:
 	int x = 20;
 	int y = 3;
+	void(*functionInExecution)(void);
 public:
+	Mine();
+	~Mine();
 	std::pair<int, int> getLocation();
 	void Enter();
 	void Update();
@@ -46,7 +52,10 @@ class Bank : public State{
 private:
 	int x = 34;
 	int y = 20;
+	void(*functionInExecution)(void);
 public:
+	Bank();
+	~Bank();
 	std::pair<int, int> getLocation();
 	void Enter();
 	void Update();
@@ -57,7 +66,10 @@ class Saloon : public State{
 private:
 	int x = 21;
 	int y = 20;
+	void(*functionInExecution)(void);
 public:
+	Saloon();
+	~Saloon();
 	std::pair<int, int> getLocation();
 	void Enter();
 	void Update();

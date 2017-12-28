@@ -1,9 +1,34 @@
 #include "State.h"
 
+//Constructores y destructores
 State::State() {
 
 }
 State::~State() {
+
+}
+Home::Home() {
+
+}
+Home::~Home() {
+
+}
+Mine::Mine() {
+
+}
+Mine::~Mine() {
+
+}
+Bank::Bank() {
+
+}
+Bank::~Bank() {
+
+}
+Saloon::Saloon() {
+
+}
+Saloon::~Saloon() {
 
 }
 
