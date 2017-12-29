@@ -1,30 +1,22 @@
 #pragma once
 #include <utility> //pairs
 
-class State
+class State 
 {
-private:
-
+protected:
+	int x;
+	int y;
 public:
 	State();
 	~State();
-	void Enter();
-	void Update();
-	void Exit();
+	virtual void Enter();
+	virtual void Update();
+	virtual void Exit();
 };
-
-/*Mina: x20 y3
-Home: x8 y20
-Taberna: x21 y20
-Banco: x34 y20
-Nowhere: x20 y11*/
 
 class Home : public State{ //Estado que determina que el agente debe dirigirse o permanecer en casa
 private:
-	//Casilla posicionamiento:
-	int x = 8;
-	int y = 20;
-	void(*functionInExecution)(void); // &functionInExecution (Referencia a la función que se está ejecutando)
+	void(Home::*functionInExecution)(); // &functionInExecution (Referencia a la función que se está ejecutando
 public:
 	std::pair<int, int> getLocation();
 	Home();
@@ -36,9 +28,7 @@ public:
 
 class Mine : public State{
 private:
-	int x = 20;
-	int y = 3;
-	void(*functionInExecution)(void);
+	void(Mine::*functionInExecution)();
 public:
 	Mine();
 	~Mine();
@@ -50,9 +40,7 @@ public:
 
 class Bank : public State{
 private:
-	int x = 34;
-	int y = 20;
-	void(*functionInExecution)(void);
+	void(Bank::*functionInExecution)();
 public:
 	Bank();
 	~Bank();
@@ -64,9 +52,7 @@ public:
 
 class Saloon : public State{
 private:
-	int x = 21;
-	int y = 20;
-	void(*functionInExecution)(void);
+	void(Saloon::*functionInExecution)();
 public:
 	Saloon();
 	~Saloon();

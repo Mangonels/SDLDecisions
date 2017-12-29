@@ -22,7 +22,7 @@ Agent::Agent() : sprite_texture(0),
 				 stamina(100)
 {
 	steering_behavior = new SteeringBehavior;
-	currentState = new Home; //Default start function pointer style finite state machine State
+	currentState = new Mine; //Default start function pointer style finite state machine State
 }
 
 Agent::~Agent()
@@ -116,6 +116,9 @@ void Agent::update(Vector2D steering_force, float dtime, SDL_Event *event)
 	if (position.y < 0) position.y = TheApp::Instance()->getWinSize().y;
 	if (position.x > TheApp::Instance()->getWinSize().x) position.x = 0;
 	if (position.y > TheApp::Instance()->getWinSize().y) position.y = 0;
+
+	//Ejecutar la función en el puntero del estado:
+	//ALGO ASÍ currentState functionInExecution();
 }
 
 void Agent::draw()
