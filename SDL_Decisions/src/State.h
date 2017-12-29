@@ -15,15 +15,17 @@ public:
 	virtual void Enter();
 	virtual void Update();
 	virtual void Exit();
+	virtual void ExecuteCurFunction();
 };
 
 class Mine : public State { //Estado que determina que el agente debe dirigirse o permanecer en la mina
 private:
-	void(Mine::*functionInExecution)(); // &functionInExecution (Referencia a la función que se está ejecutando
+	void(Mine::*functionInExecution)() = NULL; // &functionInExecution (Referencia a la función que se está ejecutando
 public:
 	Mine();
 	~Mine();
 	std::pair<int, int> getLocation();
+	void ExecuteCurFunction();
 	void Enter();
 	void Update();
 	void Exit();
@@ -36,6 +38,7 @@ public:
 	std::pair<int, int> getLocation();
 	Home();
 	~Home();
+	void ExecuteCurFunction();
 	void Enter();
 	void Update();
 	void Exit();
@@ -48,6 +51,7 @@ public:
 	Bank();
 	~Bank();
 	std::pair<int, int> getLocation();
+	void ExecuteCurFunction();
 	void Enter();
 	void Update();
 	void Exit();
@@ -60,6 +64,7 @@ public:
 	Saloon();
 	~Saloon();
 	std::pair<int, int> getLocation();
+	void ExecuteCurFunction();
 	void Enter();
 	void Update();
 	void Exit();

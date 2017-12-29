@@ -23,11 +23,7 @@ private:
 	float max_force;
 	float max_velocity;
 
-	float gold;
-	int thirst;
-	int stamina;
-
-	State *currentState;
+	
 
 	SDL_Color color;
 
@@ -53,5 +49,9 @@ public:
 	void update(Vector2D steering_force, float dtime, SDL_Event *event);
 	void draw();
 	bool Agent::loadSpriteTexture(char* filename, int num_frames=1);
-	
+	float gold;
+	int thirst;
+	int stamina;
+
+	State *currentState;
 };

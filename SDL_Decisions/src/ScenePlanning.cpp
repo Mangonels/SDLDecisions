@@ -47,6 +47,8 @@ ScenePlanning::~ScenePlanning()
 
 void ScenePlanning::update(float dtime, SDL_Event *event)
 {
+	agents[0]->currentState->ExecuteCurFunction();
+	//(*this.*functionInExecution)();
 	//Dibujar grid si o no:
 	switch (event->type) {
 	case SDL_KEYDOWN:

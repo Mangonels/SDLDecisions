@@ -7,14 +7,24 @@ State::State() {
 State::~State() {
 
 }
+void State::Enter() {
 
+}
+void State::Update() {
+
+}
+void State::Exit() {
+
+}
+void State::ExecuteCurFunction() {
+}
 Mine::Mine() {
 	//Establecer que coordenadas tiene este estado
 	x = 20;
 	y = 3;
 	//Ejecutar primera funcion y guardarse referencia
-	functionInExecution = &Enter;
-	//functionInExecution(); NO CHUTA ESTA MIERDA
+	functionInExecution = &Mine::Enter;
+	// esto ejecuta la function
 }
 Mine::~Mine() {
 
@@ -22,7 +32,7 @@ Mine::~Mine() {
 Home::Home() {
 	x = 8;
 	y = 20;
-	functionInExecution = &Enter;
+	functionInExecution = &Home::Enter;
 }
 Home::~Home() {
 
@@ -30,7 +40,7 @@ Home::~Home() {
 Bank::Bank() {
 	x = 34;
 	y = 20;
-	functionInExecution = &Enter;
+	functionInExecution = &Bank::Enter;
 }
 Bank::~Bank() {
 
@@ -38,41 +48,33 @@ Bank::~Bank() {
 Saloon::Saloon() {
 	x = 21;
 	y = 20;
-	functionInExecution = &Enter;
+	functionInExecution = &Saloon::Enter;
 }
 Saloon::~Saloon() {
 
 }
 
 //Enters
-void State::Enter(){
-
-}
 void Home::Enter() {
 
 }
 void Mine::Enter() {
 	//Comprobar coordenadas, deberíamos estar en las marcadas en la clase actual
-	if (x ==  && y == ) {
-
-	}
-	else {
-
-	}
+	int x = 545;
+	float y = 15;
 	//Si estamos en las coordenadas correctas, ejecutar funcion de inicio del estado actual
 	//Si no estamos en las coordenadas correctas, cambiamos el target del pathfinder para que el agente se dirija a ellas.
 }
 void Bank::Enter() {
 
+	int x = 545;
+	float y = 15;
 }
 void Saloon::Enter() {
 
 }
 
 //Updates
-void State::Update(){
-	//Si estamos en las coordenadas correctas, ejecutar funcion de update del estado actual
-}
 
 void Home::Update() {
 
@@ -88,9 +90,6 @@ void Saloon::Update() {
 }
 
 //Exits
-void State::Exit() {
-	//Ejecutar funcion de salida del estado actual
-}
 
 void Home::Exit() {
 
@@ -105,7 +104,18 @@ void Saloon::Exit() {
 
 }
 
-
+void Home::ExecuteCurFunction() {
+	(*this.*functionInExecution)();
+}
+void Mine::ExecuteCurFunction() {
+	(*this.*functionInExecution)();
+}
+void Bank::ExecuteCurFunction() {
+	(*this.*functionInExecution)();
+}
+void Saloon::ExecuteCurFunction() {
+	(*this.*functionInExecution)();
+}
 //Localizaciones:
 std::pair<int, int> Home::getLocation() {
 	return std::make_pair(x, y);
