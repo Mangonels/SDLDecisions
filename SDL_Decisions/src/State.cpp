@@ -8,26 +8,23 @@ State::~State() {
 
 }
 
-/*Mina: x20 y3
-Home: x8 y20
-Saloon: x21 y20
-Banco: x34 y20
-Nowhere: x20 y11*/
+Mine::Mine() {
+	//Establecer que coordenadas tiene este estado
+	x = 20;
+	y = 3;
+	//Ejecutar primera funcion y guardarse referencia
+	functionInExecution = &Enter;
+	//functionInExecution(); NO CHUTA ESTA MIERDA
+}
+Mine::~Mine() {
 
+}
 Home::Home() {
 	x = 8;
 	y = 20;
 	functionInExecution = &Enter;
 }
 Home::~Home() {
-
-}
-Mine::Mine() {
-	x = 20;
-	y = 3;
-	functionInExecution = &Enter;
-}
-Mine::~Mine() {
 
 }
 Bank::Bank() {

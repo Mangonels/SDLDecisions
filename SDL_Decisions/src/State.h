@@ -1,38 +1,41 @@
 #pragma once
 #include <utility> //pairs
 
-class State 
+class State //Clase abstracta representativa de un estado
 {
 protected:
+	//Posición en la que debemos estar según el estado
 	int x;
 	int y;
 public:
 	State();
 	~State();
+
+	//Funciones del loop de un estado
 	virtual void Enter();
 	virtual void Update();
 	virtual void Exit();
 };
 
-class Home : public State{ //Estado que determina que el agente debe dirigirse o permanecer en casa
+class Mine : public State { //Estado que determina que el agente debe dirigirse o permanecer en la mina
 private:
-	void(Home::*functionInExecution)(); // &functionInExecution (Referencia a la función que se está ejecutando
+	void(Mine::*functionInExecution)(); // &functionInExecution (Referencia a la función que se está ejecutando
 public:
+	Mine();
+	~Mine();
 	std::pair<int, int> getLocation();
-	Home();
-	~Home();
 	void Enter();
 	void Update();
 	void Exit();
 };
 
-class Mine : public State{
+class Home : public State{ 
 private:
-	void(Mine::*functionInExecution)();
+	void(Home::*functionInExecution)();
 public:
-	Mine();
-	~Mine();
 	std::pair<int, int> getLocation();
+	Home();
+	~Home();
 	void Enter();
 	void Update();
 	void Exit();
