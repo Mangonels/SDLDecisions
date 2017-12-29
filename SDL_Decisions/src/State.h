@@ -1,5 +1,6 @@
 #pragma once
 #include <utility> //pairs
+#include "CurrentScene.h"
 
 class State //Clase abstracta representativa de un estado
 {
@@ -20,14 +21,14 @@ public:
 
 class Mine : public State { //Estado que determina que el agente debe dirigirse o permanecer en la mina
 private:
-	void(Mine::*functionInExecution)() = NULL; // &functionInExecution (Referencia a la función que se está ejecutando
+	void(Mine::*functionInExecution)(Agent*) = NULL; // &functionInExecution (Referencia a la función que se está ejecutando
 public:
-	Mine();
+	Mine(Agent* theAgent);
 	~Mine();
 	std::pair<int, int> getLocation();
 	void ExecuteCurFunction();
-	void Enter();
-	void Update();
+	void Enter(Agent*);
+	void Update(Agent*);
 	void Exit();
 };
 

@@ -3,7 +3,7 @@
 #include <SDL_image.h>
 
 #include "SDL_SimpleApp.h"
-#include "ScenePlanning.h"
+#include "CurrentScene.h"
 
 #define FRAMES_PER_SEC 30
 
@@ -18,7 +18,6 @@ int main(int argc, char ** argv)
 
 	SDL_SimpleApp *app = SDL_SimpleApp::Instance();
 
-	Scene *curr_scene = new ScenePlanning;
 	app->setWindowTitle(curr_scene->getTitle());
 
 	while (!quit)

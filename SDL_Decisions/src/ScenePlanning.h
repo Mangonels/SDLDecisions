@@ -6,8 +6,7 @@
 #include "Grid.h"
 #include "Path.h"
 
-class ScenePlanning :
-	public Scene
+class ScenePlanning : public Scene
 {
 public:
 	ScenePlanning();
@@ -15,6 +14,9 @@ public:
 	void update(float dtime, SDL_Event *event);
 	void draw();
 	const char* getTitle();
+	Vector2D cell2pix(Vector2D cell);
+	Vector2D pix2cell(Vector2D pix);
+	bool isValidCell(Vector2D cell);
 private:
 	std::vector<Agent*> agents;
 	Vector2D coinPosition;
@@ -32,9 +34,7 @@ private:
 	void initMaze();
 	bool loadTextures(char* filename_bg, char* filename_coin);
 	std::vector< std::vector<int> > terrain;
-	Vector2D cell2pix(Vector2D cell);
-	Vector2D pix2cell(Vector2D pix);
-	bool isValidCell(Vector2D cell);
+
 	Grid nodeGrid;
 	Vector2D startNodePosition;
 	bool startNewPath = true;

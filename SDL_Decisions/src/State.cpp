@@ -17,14 +17,16 @@ void State::Exit() {
 
 }
 void State::ExecuteCurFunction() {
+
 }
-Mine::Mine() {
+
+Mine::Mine(Agent* theAgent) {
 	//Establecer que coordenadas tiene este estado
 	x = 20;
 	y = 3;
-	//Ejecutar primera funcion y guardarse referencia
-	functionInExecution = &Mine::Enter;
-	// esto ejecuta la function
+	//Establecer referencia de la funcion a ejecutar y...
+	//Se ejecutará utilizando el puntero del agente contenido en el array de agentes, y llamando a la función ExecuteCurFunction() del estado del agente:
+	functionInExecution = &Mine::Enter; //Enter (Entrando en el modo mine), Porque acabamos de asignar el estado mine.
 }
 Mine::~Mine() {
 
@@ -58,17 +60,27 @@ Saloon::~Saloon() {
 void Home::Enter() {
 
 }
-void Mine::Enter() {
+void Mine::Enter(Agent* theAgent) {
+	
 	//Comprobar coordenadas, deberíamos estar en las marcadas en la clase actual
-	int x = 545;
-	float y = 15;
+	if (x == theAgent->getPosition().x && y == theAgent->getPosition().y) 
+	{
+		
+	}
+	else //T 
+	{
+		
+	}
+
 	//Si estamos en las coordenadas correctas, ejecutar funcion de inicio del estado actual
 	//Si no estamos en las coordenadas correctas, cambiamos el target del pathfinder para que el agente se dirija a ellas.
+
+	//Establecer update como funcion a ejecutar:
+	functionInExecution = &Mine::Update;
 }
 void Bank::Enter() {
 
-	int x = 545;
-	float y = 15;
+
 }
 void Saloon::Enter() {
 
@@ -79,7 +91,7 @@ void Saloon::Enter() {
 void Home::Update() {
 
 }
-void Mine::Update() {
+void Mine::Update(Agent*) {
 
 }
 void Bank::Update() {

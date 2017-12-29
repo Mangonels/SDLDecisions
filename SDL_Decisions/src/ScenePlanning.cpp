@@ -24,6 +24,7 @@ ScenePlanning::ScenePlanning()
 	//Setting agent position to middle area
 	Vector2D startCell(20,11);
 	agents[0]->setPosition(cell2pix(startCell));
+	startNodePosition = startCell;
 
 	//PathFollowing next Target
 	currentTarget = Vector2D(1, 1);

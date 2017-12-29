@@ -1,3 +1,44 @@
-﻿  State.cpp
-  SDL_Planning.vcxproj -> E:\Yosm\Documents\uni\3r\3r1sem\ia\SDLDecisions\SDL_Decisions\\bin\SDL_Planning.exe
-  SDL_Planning.vcxproj -> E:\Yosm\Documents\uni\3r\3r1sem\ia\SDLDecisions\SDL_Decisions\\bin\SDL_Planning.pdb (Partial PDB)
+﻿  main.cpp
+  State.cpp
+c:\users\dylan\desktop\localrepo\sdldecisions\sdl_decisions\src\agent.h(56): error C2143: error de sintaxis: falta ';' delante de '*'
+c:\users\dylan\desktop\localrepo\sdldecisions\sdl_decisions\src\agent.h(56): error C4430: falta el especificador de tipo; se presupone int. Nota: C++ no admite default-int
+c:\users\dylan\desktop\localrepo\sdldecisions\sdl_decisions\src\agent.h(56): error C2238: símbolos (token) inesperados delante de ';'
+c:\users\dylan\desktop\localrepo\sdldecisions\sdl_decisions\src\state.cpp(123): error C2198: 'void (__thiscall Mine::* )(Agent *)': no hay suficientes argumentos para la llamada
+  ScenePlanning.cpp
+c:\users\dylan\desktop\localrepo\sdldecisions\sdl_decisions\src\currentscene.h(5): error C2061: error de sintaxis: identificador 'ScenePlanning'
+c:\users\dylan\desktop\localrepo\sdldecisions\sdl_decisions\src\sceneplanning.cpp(61): warning C4018: '<': no coinciden signed/unsigned
+  Agent.cpp
+  Generando código...
+  Compilando...
+  SteeringBehavior.cpp
+c:\users\dylan\desktop\localrepo\sdldecisions\sdl_decisions\src\sceneplanning.h(21): error C2065: 'Agent': identificador no declarado
+c:\users\dylan\desktop\localrepo\sdldecisions\sdl_decisions\src\sceneplanning.h(21): error C2059: error de sintaxis: '>'
+c:\users\dylan\desktop\localrepo\sdldecisions\sdl_decisions\src\sceneplanning.h(21): error C2976: 'std::vector': no hay suficientes argumentos de plantilla
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.11.25503\include\vector(659): note: vea la declaración de 'std::vector'
+c:\users\dylan\desktop\localrepo\sdldecisions\sdl_decisions\src\state.h(24): error C2061: error de sintaxis: identificador 'Agent'
+c:\users\dylan\desktop\localrepo\sdldecisions\sdl_decisions\src\state.h(26): error C2061: error de sintaxis: identificador 'Agent'
+c:\users\dylan\desktop\localrepo\sdldecisions\sdl_decisions\src\state.h(30): error C2061: error de sintaxis: identificador 'Agent'
+c:\users\dylan\desktop\localrepo\sdldecisions\sdl_decisions\src\state.h(31): error C2061: error de sintaxis: identificador 'Agent'
+  Grid.cpp
+c:\users\dylan\desktop\localrepo\sdldecisions\sdl_decisions\src\sceneplanning.h(38): error C3646: 'nodeGrid': especificador de invalidación desconocido
+c:\users\dylan\desktop\localrepo\sdldecisions\sdl_decisions\src\sceneplanning.h(38): error C4430: falta el especificador de tipo; se presupone int. Nota: C++ no admite default-int
+c:\users\dylan\desktop\localrepo\sdldecisions\sdl_decisions\src\grid.cpp(104): warning C4244: 'argumento': conversión de 'float' a 'const unsigned int'; posible pérdida de datos
+c:\users\dylan\desktop\localrepo\sdldecisions\sdl_decisions\src\grid.cpp(105): warning C4244: 'argumento': conversión de 'float' a 'const unsigned int'; posible pérdida de datos
+c:\users\dylan\desktop\localrepo\sdldecisions\sdl_decisions\src\grid.cpp(110): warning C4244: 'return': conversión de 'float' a 'int'; posible pérdida de datos
+c:\users\dylan\desktop\localrepo\sdldecisions\sdl_decisions\src\grid.cpp(115): warning C4244: 'argumento': conversión de 'float' a 'const unsigned int'; posible pérdida de datos
+c:\users\dylan\desktop\localrepo\sdldecisions\sdl_decisions\src\grid.cpp(141): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
+c:\users\dylan\desktop\localrepo\sdldecisions\sdl_decisions\src\grid.cpp(142): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
+c:\users\dylan\desktop\localrepo\sdldecisions\sdl_decisions\src\grid.cpp(151): warning C4244: 'argumento': conversión de 'float' a 'const unsigned int'; posible pérdida de datos
+c:\users\dylan\desktop\localrepo\sdldecisions\sdl_decisions\src\grid.cpp(180): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
+c:\users\dylan\desktop\localrepo\sdldecisions\sdl_decisions\src\grid.cpp(181): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
+c:\users\dylan\desktop\localrepo\sdldecisions\sdl_decisions\src\grid.cpp(190): warning C4244: 'argumento': conversión de 'float' a 'const unsigned int'; posible pérdida de datos
+c:\users\dylan\desktop\localrepo\sdldecisions\sdl_decisions\src\grid.cpp(197): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+c:\users\dylan\desktop\localrepo\sdldecisions\sdl_decisions\src\grid.cpp(208): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+c:\users\dylan\desktop\localrepo\sdldecisions\sdl_decisions\src\grid.cpp(222): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
+c:\users\dylan\desktop\localrepo\sdldecisions\sdl_decisions\src\grid.cpp(223): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
+c:\users\dylan\desktop\localrepo\sdldecisions\sdl_decisions\src\grid.cpp(233): warning C4244: 'argumento': conversión de 'float' a 'const unsigned int'; posible pérdida de datos
+c:\users\dylan\desktop\localrepo\sdldecisions\sdl_decisions\src\grid.cpp(240): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+c:\users\dylan\desktop\localrepo\sdldecisions\sdl_decisions\src\grid.cpp(252): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+c:\users\dylan\desktop\localrepo\sdldecisions\sdl_decisions\src\grid.cpp(267): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
+c:\users\dylan\desktop\localrepo\sdldecisions\sdl_decisions\src\grid.cpp(268): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
+  Generando código...
