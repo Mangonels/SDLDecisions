@@ -55,11 +55,11 @@ void ScenePlanning::update(float dtime, SDL_Event *event)
 			draw_grid = !draw_grid;
 		break;
 	}
-	if (startNewPath) { //Encontrar camino mediante aplus
+	if (agents[0]->startNewPath) { //Encontrar camino mediante aplus
 		for (int i = 0; i < agents.size(); i++) {
 			cout << "Ejecutando busqueda de camino mediante APLUS modo en ejecucion: " << getCurrentMode((Pathfinders)pathfinder) << endl;
 			path = nodeGrid.APlus(startNodePosition);
-			startNewPath = false;
+			agents[0]->startNewPath = false;
 		}
 	}
 
@@ -79,17 +79,14 @@ void ScenePlanning::update(float dtime, SDL_Event *event)
 				{
 					path.points.clear();
 					nodeGrid.Clear(); //resets grid
-					startNodePosition = coinPosition;
+					startNodePosition = agents[0]->nextTarget;
 					currentTargetIndex = -1;
 					agents[0]->setVelocity(Vector2D(0, 0));
 					// if we have arrived to the coin, replace it in a random cell!
-					if (pix2cell(agents[0]->getPosition()) == coinPosition)
+					if (pix2cell(agents[0]->getPosition()) == agents[0]->nextTarget)
 					{
-						coinPosition = Vector2D(-1, -1);
-						while ((!isValidCell(coinPosition)) || (Vector2D::Distance(coinPosition, pix2cell(agents[0]->getPosition()))<3))
-							coinPosition = Vector2D((float)(rand() % num_cell_x), (float)(rand() % num_cell_y));
+						currentTarget = agents[0]->nextTarget;
 						//Nuevo target y nuevo path:
-						startNewPath = true;
 						nodeGrid.NewTarget(currentTarget); //Cambia el objetivo del pathfinder
 					}
 				}

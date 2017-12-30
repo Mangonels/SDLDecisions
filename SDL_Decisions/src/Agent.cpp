@@ -17,11 +17,19 @@ Agent::Agent() : sprite_texture(0),
 	             draw_sprite(false),
 
 				 //Init status values:
-				 gold(0.0f),
+				 goldPocket(0.0f),
+				 maxGoldPocket(25.0f),
+				 goldBank(0.0f),
+				 goldBankDay(0.0f),
+				 goldBankDayMax(50.0),
 				 thirst(0),
-				 stamina(100)
+				 maxThirst(100),
+				 stamina(100),
+				 maxStamina(100),
+				startNewPath(false)
 {
 	steering_behavior = new SteeringBehavior;
+	nextTarget = Vector2D(0, 0);
 	currentState = new Mine; //Default start function pointer style finite state machine State
 }
 

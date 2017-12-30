@@ -49,8 +49,17 @@ public:
 	void update(Vector2D steering_force, float dtime, SDL_Event *event);
 	void draw();
 	bool Agent::loadSpriteTexture(char* filename, int num_frames=1);
-	float gold;
+	float goldPocket;
+	float maxGoldPocket;
+	float goldBank;
+	float goldBankDay;
+	float goldBankDayMax;
 	int thirst;
+	int maxThirst;
 	int stamina;
+	int maxStamina;
+
 	State *currentState;
+	Vector2D nextTarget;
+	bool startNewPath;
 };
