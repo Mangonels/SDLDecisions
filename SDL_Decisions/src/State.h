@@ -1,7 +1,7 @@
 #pragma once
 #include <utility> //pairs
-#include "CurrentScene.h"
-
+#include "Agent.h"
+class Agent;
 class State //Clase abstracta representativa de un estado
 {
 protected:
@@ -13,60 +13,60 @@ public:
 	~State();
 
 	//Funciones del loop de un estado
-	virtual void Enter();
-	virtual void Update();
-	virtual void Exit();
-	virtual void ExecuteCurFunction();
+	virtual void Enter(Agent* agent);
+	virtual void Update(Agent* agent);
+	virtual void Exit(Agent* agent);
+	virtual void ExecuteCurFunction(Agent* agent);
 };
 
 class Mine : public State { //Estado que determina que el agente debe dirigirse o permanecer en la mina
 private:
 	void(Mine::*functionInExecution)(Agent*) = NULL; // &functionInExecution (Referencia a la función que se está ejecutando
 public:
-	Mine(Agent* theAgent);
+	Mine();
 	~Mine();
 	std::pair<int, int> getLocation();
-	void ExecuteCurFunction();
+	void ExecuteCurFunction(Agent*);
 	void Enter(Agent*);
 	void Update(Agent*);
-	void Exit();
+	void Exit(Agent*);
 };
 
 class Home : public State{ 
 private:
-	void(Home::*functionInExecution)();
-public:
+	void(Home::*functionInExecution)(Agent*) = NULL; 
+	public:
 	std::pair<int, int> getLocation();
 	Home();
 	~Home();
-	void ExecuteCurFunction();
-	void Enter();
-	void Update();
-	void Exit();
+	void ExecuteCurFunction(Agent*);
+	void Enter(Agent*);
+	void Update(Agent*);
+	void Exit(Agent*);
 };
 
 class Bank : public State{
 private:
-	void(Bank::*functionInExecution)();
+	void(Bank::*functionInExecution)(Agent*) = NULL;
 public:
 	Bank();
 	~Bank();
 	std::pair<int, int> getLocation();
-	void ExecuteCurFunction();
-	void Enter();
-	void Update();
-	void Exit();
+	void ExecuteCurFunction(Agent*);
+	void Enter(Agent*);
+	void Update(Agent*);
+	void Exit(Agent*);
 };
 
 class Saloon : public State{
 private:
-	void(Saloon::*functionInExecution)();
+	void(Saloon::*functionInExecution)(Agent*) = NULL;
 public:
 	Saloon();
 	~Saloon();
 	std::pair<int, int> getLocation();
-	void ExecuteCurFunction();
-	void Enter();
-	void Update();
-	void Exit();
+	void ExecuteCurFunction(Agent*);
+	void Enter(Agent*);
+	void Update(Agent*);
+	void Exit(Agent*);
 };

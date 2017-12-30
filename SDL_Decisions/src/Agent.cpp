@@ -22,7 +22,7 @@ Agent::Agent() : sprite_texture(0),
 				 stamina(100)
 {
 	steering_behavior = new SteeringBehavior;
-	currentState = new Mine(this); //Funcion de estado de comienzo por defecto, function pointer style finite state machine State (Tambien pasa el agente por referencia)
+	currentState = new Mine; //Default start function pointer style finite state machine State
 }
 
 Agent::~Agent()

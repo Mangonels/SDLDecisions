@@ -1,5 +1,4 @@
 #include "State.h"
-
 //Constructores y destructores
 State::State() {
 	
@@ -7,26 +6,24 @@ State::State() {
 State::~State() {
 
 }
-void State::Enter() {
+void State::Enter(Agent*) {
 
 }
-void State::Update() {
+void State::Update(Agent*) {
 
 }
-void State::Exit() {
+void State::Exit(Agent*) {
 
 }
-void State::ExecuteCurFunction() {
-
+void State::ExecuteCurFunction(Agent*) {
 }
-
-Mine::Mine(Agent* theAgent) {
+Mine::Mine() {
 	//Establecer que coordenadas tiene este estado
 	x = 20;
 	y = 3;
-	//Establecer referencia de la funcion a ejecutar y...
-	//Se ejecutará utilizando el puntero del agente contenido en el array de agentes, y llamando a la función ExecuteCurFunction() del estado del agente:
-	functionInExecution = &Mine::Enter; //Enter (Entrando en el modo mine), Porque acabamos de asignar el estado mine.
+	//Ejecutar primera funcion y guardarse referencia
+	functionInExecution = &Mine::Enter;
+	// esto ejecuta la function
 }
 Mine::~Mine() {
 
@@ -57,76 +54,68 @@ Saloon::~Saloon() {
 }
 
 //Enters
-void Home::Enter() {
+void Home::Enter(Agent* agent) {
 
 }
-void Mine::Enter(Agent* theAgent) {
-	
+void Mine::Enter(Agent* agent) {
 	//Comprobar coordenadas, deberíamos estar en las marcadas en la clase actual
-	if (x == theAgent->getPosition().x && y == theAgent->getPosition().y) 
-	{
-		
-	}
-	else //T 
-	{
-		
-	}
+	int x = 545;
+	float y = 15;
+	functionInExecution = &Mine::Update;
 
 	//Si estamos en las coordenadas correctas, ejecutar funcion de inicio del estado actual
 	//Si no estamos en las coordenadas correctas, cambiamos el target del pathfinder para que el agente se dirija a ellas.
-
-	//Establecer update como funcion a ejecutar:
-	functionInExecution = &Mine::Update;
 }
-void Bank::Enter() {
+void Bank::Enter(Agent* agent) {
 
-
+	int x = 545;
+	float y = 15;
 }
-void Saloon::Enter() {
+void Saloon::Enter(Agent* agent) {
 
 }
 
 //Updates
 
-void Home::Update() {
+void Home::Update(Agent* agent) {
 
 }
-void Mine::Update(Agent*) {
+void Mine::Update(Agent* agent) {
+	int kik = 0;
+}
+void Bank::Update(Agent* agent) {
 
 }
-void Bank::Update() {
-
-}
-void Saloon::Update() {
+void Saloon::Update(Agent* agent) {
 
 }
 
 //Exits
 
-void Home::Exit() {
+void Home::Exit(Agent* agent) {
 
 }
-void Mine::Exit() {
+void Mine::Exit(Agent* agent) {
 
 }
-void Bank::Exit() {
+void Bank::Exit(Agent* agent) {
 
 }
-void Saloon::Exit() {
+void Saloon::Exit(Agent* agent) {
 
 }
 
-void Home::ExecuteCurFunction() {
-	(*this.*functionInExecution)();
+void Home::ExecuteCurFunction(Agent* agent) {
+	(*this.*functionInExecution)(agent);
 }
-void Mine::ExecuteCurFunction() {
-	(*this.*functionInExecution)();
+void Mine::ExecuteCurFunction(Agent* agent) {
+	(*this.*functionInExecution)(agent);
 }
-void Bank::ExecuteCurFunction() {
-	(*this.*functionInExecution)();
+void Bank::ExecuteCurFunction(Agent* agent) {
+	(*this.*functionInExecution)(agent);
 }
-void Saloon::ExecuteCurFunction() {
-	(*this.*functionInExecution)();
+void Saloon::ExecuteCurFunction(Agent* agent) {
+	(*this.*functionInExecution)(agent);
 }
 //Localizaciones:
 std::pair<int, int> Home::getLocation() {

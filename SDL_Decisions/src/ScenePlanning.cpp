@@ -25,7 +25,6 @@ ScenePlanning::ScenePlanning()
 	Vector2D startCell(20,11);
 	agents[0]->setPosition(cell2pix(startCell));
 	startNodePosition = startCell;
-
 	//PathFollowing next Target
 	currentTarget = Vector2D(1, 1);
 	nodeGrid.NewTarget(currentTarget);
@@ -48,8 +47,7 @@ ScenePlanning::~ScenePlanning()
 
 void ScenePlanning::update(float dtime, SDL_Event *event)
 {
-	agents[0]->currentState->ExecuteCurFunction();
-	//(*this.*functionInExecution)();
+	agents[0]->currentState->ExecuteCurFunction(agents[0]);
 	//Dibujar grid si o no:
 	switch (event->type) {
 	case SDL_KEYDOWN:

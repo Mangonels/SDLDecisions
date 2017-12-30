@@ -8,7 +8,7 @@
 #include "utils.h"
 #include "SteeringBehavior.h"
 #include "State.h"
-
+class State;
 class Agent
 {
 	friend class SteeringBehavior;
@@ -52,6 +52,5 @@ public:
 	float gold;
 	int thirst;
 	int stamina;
-
 	State *currentState;
 };
