@@ -1,2 +1,6 @@
-﻿  SDL_Planning.vcxproj -> E:\Yosm\Documents\uni\3r\3r1sem\ia\SDLDecisions\SDL_Decisions\\bin\SDL_Planning.exe
-  SDL_Planning.vcxproj -> E:\Yosm\Documents\uni\3r\3r1sem\ia\SDLDecisions\SDL_Decisions\\bin\SDL_Planning.pdb (Partial PDB)
+﻿  main.cpp
+  GoalOrientedActionPlanningScene.cpp
+c:\users\dylan\desktop\localrepo\sdldecisions\sdl_decisions\src\goalorientedactionplanningscene.cpp(57): warning C4018: '<': no coinciden signed/unsigned
+  Generando código...
+  SDL_Planning.vcxproj -> C:\Users\dylan\Desktop\LocalRepo\SDLDecisions\SDL_Decisions\\bin\SDL_Planning.exe
+  SDL_Planning.vcxproj -> C:\Users\dylan\Desktop\LocalRepo\SDLDecisions\SDL_Decisions\\bin\SDL_Planning.pdb (Partial PDB)

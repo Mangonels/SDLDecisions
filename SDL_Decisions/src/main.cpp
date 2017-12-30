@@ -3,7 +3,8 @@
 #include <SDL_image.h>
 
 #include "SDL_SimpleApp.h"
-#include "ScenePlanning.h"
+#include "FiniteStateMachineScene.h"
+#include "GoalOrientedActionPlanningScene.h"
 
 #define FRAMES_PER_SEC 30
 
@@ -18,7 +19,7 @@ int main(int argc, char ** argv)
 
 	SDL_SimpleApp *app = SDL_SimpleApp::Instance();
 
-	Scene *curr_scene = new ScenePlanning;
+	Scene *curr_scene = new FiniteStateMachineScene;
 	app->setWindowTitle(curr_scene->getTitle());
 
 	while (!quit)
@@ -40,11 +41,14 @@ int main(int argc, char ** argv)
 			if (event.key.keysym.scancode == SDL_SCANCODE_1)
 			{
 				delete(curr_scene);
-				curr_scene = new ScenePlanning;
+				curr_scene = new FiniteStateMachineScene;
 				app->setWindowTitle(curr_scene->getTitle());
 			}
 			if (event.key.keysym.scancode == SDL_SCANCODE_2)
 			{
+				delete(curr_scene);
+				curr_scene = new GoalOrientedActionPlanningScene;
+				app->setWindowTitle(curr_scene->getTitle());
 			}
 			if (event.key.keysym.scancode == SDL_SCANCODE_3)
 			{
