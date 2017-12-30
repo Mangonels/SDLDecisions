@@ -25,12 +25,11 @@ Agent::Agent() : sprite_texture(0),
 				 thirst(0),
 				 maxThirst(100),
 				 stamina(100),
-				 maxStamina(100),
-				startNewPath(false)
+				 maxStamina(100)
 {
 	steering_behavior = new SteeringBehavior;
-	nextTarget = Vector2D(0, 0);
 	currentState = new Mine; //Default start function pointer style finite state machine State
+	startNewPath = false;
 }
 
 Agent::~Agent()

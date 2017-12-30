@@ -26,10 +26,8 @@ ScenePlanning::ScenePlanning()
 	agents[0]->setPosition(cell2pix(startCell));
 	startNodePosition = startCell;
 	//PathFollowing next Target
-	currentTarget = Vector2D(1, 1);
-	nodeGrid.NewTarget(currentTarget);
 	currentTargetIndex = -1;
-
+	startNewPath = false;
 }
 
 ScenePlanning::~ScenePlanning()
@@ -55,11 +53,12 @@ void ScenePlanning::update(float dtime, SDL_Event *event)
 			draw_grid = !draw_grid;
 		break;
 	}
-	if (agents[0]->startNewPath) { //Encontrar camino mediante aplus
+	if (startNewPath) { //Encontrar camino mediante aplus
 		for (int i = 0; i < agents.size(); i++) {
 			cout << "Ejecutando busqueda de camino mediante APLUS modo en ejecucion: " << getCurrentMode((Pathfinders)pathfinder) << endl;
 			path = nodeGrid.APlus(startNodePosition);
 			agents[0]->startNewPath = false;
+			startNewPath = false;
 		}
 	}
 
@@ -79,16 +78,13 @@ void ScenePlanning::update(float dtime, SDL_Event *event)
 				{
 					path.points.clear();
 					nodeGrid.Clear(); //resets grid
-					startNodePosition = agents[0]->nextTarget;
 					currentTargetIndex = -1;
 					agents[0]->setVelocity(Vector2D(0, 0));
 					// if we have arrived to the coin, replace it in a random cell!
-					if (pix2cell(agents[0]->getPosition()) == agents[0]->nextTarget)
-					{
-						currentTarget = agents[0]->nextTarget;
-						//Nuevo target y nuevo path:
-						nodeGrid.NewTarget(currentTarget); //Cambia el objetivo del pathfinder
-					}
+					//Nuevo target y nuevo path:
+					startNodePosition = pix2cell(agents[0]->getPosition());
+					nodeGrid.NewTarget(agents[0]->nextTarget); //Cambia el objetivo del pathfinder
+					
 				}
 				else
 				{
@@ -108,6 +104,34 @@ void ScenePlanning::update(float dtime, SDL_Event *event)
 	{
 		agents[0]->update(Vector2D(0, 0), dtime, event);
 	}
+	//seteamos primer path
+	if (firstPath) {
+		path.points.clear();
+		nodeGrid.Clear(); //resets grid
+		currentTargetIndex = -1;
+		agents[0]->setVelocity(Vector2D(0, 0));
+		// if we have arrived to the coin, replace it in a random cell!
+		//Nuevo target y nuevo path:
+		startNodePosition = pix2cell(agents[0]->getPosition());
+		startNewPath = true;
+		nodeGrid.NewTarget(agents[0]->nextTarget); //Cambia el objetivo del pathfinder
+		firstPath = false;
+	}
+	
+	//no se por k pero sin esto no funciona jaja
+	if (agents[0]->startNewPath) {
+		startNewPath = true;
+		path.points.clear();
+		nodeGrid.Clear(); //resets grid
+		currentTargetIndex = -1;
+		agents[0]->setVelocity(Vector2D(0, 0));
+		// if we have arrived to the coin, replace it in a random cell!
+		//Nuevo target y nuevo path:
+		startNodePosition = pix2cell(agents[0]->getPosition());
+		nodeGrid.NewTarget(agents[0]->nextTarget); //Cambia el objetivo del pathfinder
+		agents[0]->startNewPath = false;
+	}
+	
 }
 
 void ScenePlanning::draw()
