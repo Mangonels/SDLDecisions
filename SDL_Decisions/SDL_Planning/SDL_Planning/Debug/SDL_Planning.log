@@ -1,6 +1,5 @@
-﻿  main.cpp
-  GoalOrientedActionPlanningScene.cpp
-c:\users\dylan\desktop\localrepo\sdldecisions\sdl_decisions\src\goalorientedactionplanningscene.cpp(57): warning C4018: '<': no coinciden signed/unsigned
-  Generando código...
-  SDL_Planning.vcxproj -> C:\Users\dylan\Desktop\LocalRepo\SDLDecisions\SDL_Decisions\\bin\SDL_Planning.exe
-  SDL_Planning.vcxproj -> C:\Users\dylan\Desktop\LocalRepo\SDLDecisions\SDL_Decisions\\bin\SDL_Planning.pdb (Partial PDB)
+﻿  GoalOrientedActionPlanningScene.cpp
+e:\yosm\documents\uni\3r\3r1sem\ia\sdldecisions\sdl_decisions\src\goalorientedactionplanningscene.cpp(96): warning C4101: 'xd': variable local sin referencia
+e:\yosm\documents\uni\3r\3r1sem\ia\sdldecisions\sdl_decisions\src\goalorientedactionplanningscene.cpp(123): warning C4018: '<': no coinciden signed/unsigned
+  SDL_Planning.vcxproj -> E:\Yosm\Documents\uni\3r\3r1sem\ia\SDLDecisions\SDL_Decisions\\bin\SDL_Planning.exe
+  SDL_Planning.vcxproj -> E:\Yosm\Documents\uni\3r\3r1sem\ia\SDLDecisions\SDL_Decisions\\bin\SDL_Planning.pdb (Partial PDB)

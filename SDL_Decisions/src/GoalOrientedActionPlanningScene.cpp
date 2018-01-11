@@ -1,5 +1,6 @@
 #include "GoalOrientedActionPlanningScene.h"
-
+#include "goap.h"
+#include "astar.h"
 using namespace std;
 
 GoalOrientedActionPlanningScene::GoalOrientedActionPlanningScene()
@@ -28,6 +29,71 @@ GoalOrientedActionPlanningScene::GoalOrientedActionPlanningScene()
 	//PathFollowing next Target
 	currentTargetIndex = -1;
 	startNewPath = false;
+
+	actionplanner_t ap;
+	goap_actionplanner_clear(&ap); // initializes action planner
+
+								   // describe repertoire of actions
+	goap_set_pre(&ap, "scout", "armedwithgun", true);
+	goap_set_pst(&ap, "scout", "enemyvisible", true);
+
+	goap_set_pre(&ap, "approach", "enemyvisible", true);
+	goap_set_pst(&ap, "approach", "nearenemy", true);
+
+	goap_set_pre(&ap, "aim", "enemyvisible", true);
+	goap_set_pre(&ap, "aim", "weaponloaded", true);
+	goap_set_pst(&ap, "aim", "enemylinedup", true);
+
+	goap_set_pre(&ap, "shoot", "enemylinedup", true);
+	goap_set_pst(&ap, "shoot", "enemyalive", false);
+
+	goap_set_pre(&ap, "load", "armedwithgun", true);
+	goap_set_pst(&ap, "load", "weaponloaded", true);
+
+	goap_set_pre(&ap, "detonatebomb", "armedwithbomb", true);
+	goap_set_pre(&ap, "detonatebomb", "nearenemy", true);
+	goap_set_pst(&ap, "detonatebomb", "alive", false);
+	goap_set_pst(&ap, "detonatebomb", "enemyalive", false);
+
+	goap_set_pre(&ap, "flee", "enemyvisible", true);
+	goap_set_pst(&ap, "flee", "nearenemy", false);
+
+	char desc[4096];
+	goap_description(&ap, desc, sizeof(desc));
+	LOGI("%s", desc);
+
+	// describe current world state.
+	worldstate_t fr;
+	goap_worldstate_clear(&fr);
+	goap_worldstate_set(&ap, &fr, "enemyvisible", false);
+	goap_worldstate_set(&ap, &fr, "armedwithgun", true);
+	goap_worldstate_set(&ap, &fr, "weaponloaded", false);
+	goap_worldstate_set(&ap, &fr, "enemylinedup", false);
+	goap_worldstate_set(&ap, &fr, "enemyalive", true);
+	goap_worldstate_set(&ap, &fr, "armedwithbomb", true);
+	goap_worldstate_set(&ap, &fr, "nearenemy", false);
+	goap_worldstate_set(&ap, &fr, "alive", true);
+
+	goap_set_cost(&ap, "detonatebomb", 5);	// make suicide more expensive than shooting.
+
+	worldstate_t goal;
+	goap_worldstate_clear(&goal);
+	goap_worldstate_set(&ap, &goal, "enemylinedup", true);
+	//goap_worldstate_set( &ap, &goal, "alive", true ); // add this to avoid suicide actions in plan.
+
+	worldstate_t states[16];
+	const char* plan[16];
+	int plansz = 16;
+	const int plancost = astar_plan(&ap, fr, goal, plan, states, &plansz);
+	LOGI("plancost = %d", plancost);
+	goap_worldstate_description(&ap, &fr, desc, sizeof(desc));
+	LOGI("%-23s%s", "", desc);
+	for (int i = 0; i<plansz && i<16; ++i)
+	{
+		goap_worldstate_description(&ap, states + i, desc, sizeof(desc));
+		LOGI("%d: %-20s%s", i, plan[i], desc);
+	}
+	int xd;
 }
 
 GoalOrientedActionPlanningScene::~GoalOrientedActionPlanningScene()
@@ -45,7 +111,7 @@ GoalOrientedActionPlanningScene::~GoalOrientedActionPlanningScene()
 
 void GoalOrientedActionPlanningScene::update(float dtime, SDL_Event *event)
 {
-	agents[0]->currentState->ExecuteCurFunction(agents[0]);
+
 	//Dibujar grid si o no:
 	switch (event->type) {
 	case SDL_KEYDOWN:
@@ -56,7 +122,7 @@ void GoalOrientedActionPlanningScene::update(float dtime, SDL_Event *event)
 	if (startNewPath) { //Encontrar camino mediante aplus
 		for (int i = 0; i < agents.size(); i++) {
 			cout << "Ejecutando busqueda de camino mediante APLUS modo en ejecucion: " << getCurrentMode((Pathfinders)pathfinder) << endl;
-			path = nodeGrid.APlus(startNodePosition);
+			//path = nodeGrid.APlus(startNodePosition);
 			agents[0]->startNewPath = false;
 			startNewPath = false;
 		}

@@ -38,4 +38,5 @@ private:
 	Vector2D startNodePosition;
 	bool startNewPath = true;
 	bool firstPath = true;
+
 };

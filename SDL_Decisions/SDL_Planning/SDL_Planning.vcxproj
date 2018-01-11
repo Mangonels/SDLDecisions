@@ -132,7 +132,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\src\Agent.cpp" />
+    <ClCompile Include="..\src\astar.c" />
     <ClCompile Include="..\src\GoalOrientedActionPlanningScene.cpp" />
+    <ClCompile Include="..\src\goap.c" />
     <ClCompile Include="..\src\Grid.cpp" />
     <ClCompile Include="..\src\main.cpp" />
     <ClCompile Include="..\src\FiniteStateMachineScene.cpp" />
@@ -143,7 +145,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\Agent.h" />
+    <ClInclude Include="..\src\astar.h" />
     <ClInclude Include="..\src\GoalOrientedActionPlanningScene.h" />
+    <ClInclude Include="..\src\goap.h" />
     <ClInclude Include="..\src\Grid.h" />
     <ClInclude Include="..\src\Path.h" />
     <ClInclude Include="..\src\Pathfinders.h" />
@@ -151,7 +155,6 @@
     <ClInclude Include="..\src\State.h" />
     <ClInclude Include="..\src\SteeringBehavior.h" />
     <ClInclude Include="..\src\utils.h" />
-    <ClInclude Include="..\src\Scene.h" />
     <ClInclude Include="..\src\SDL_SimpleApp.h" />
     <ClInclude Include="..\src\Vector2D.h" />
   </ItemGroup>
